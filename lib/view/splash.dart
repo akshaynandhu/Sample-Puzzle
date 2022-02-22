@@ -65,51 +65,58 @@ class _MyCustomSplashScreenState extends State<MyCustomSplashScreen>
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
 
-    return Scaffold(
-      backgroundColor: Colors.green,
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              AnimatedContainer(
-                  duration: Duration(milliseconds: 2000),
-                  curve: Curves.fastLinearToSlowEaseIn,
-                  height: _height / _fontSize
-              ),
-              AnimatedOpacity(
-                duration: Duration(milliseconds: 1000),
-                opacity: _textOpacity,
-                child: Text(
-                  'Color Puzzle',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: animation1.value,
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Colors.purple, Colors.redAccent])),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: [
+            Column(
+              children: [
+                AnimatedContainer(
+                    duration: Duration(milliseconds: 2000),
+                    curve: Curves.fastLinearToSlowEaseIn,
+                    height: _height / _fontSize
+                ),
+                AnimatedOpacity(
+                  duration: Duration(milliseconds: 1000),
+                  opacity: _textOpacity,
+                  child: Text(
+                    'Tweet',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: animation1.value,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Center(
-            child: AnimatedOpacity(
-              duration: Duration(milliseconds: 2000),
-              curve: Curves.fastLinearToSlowEaseIn,
-              opacity: _containerOpacity,
-              child: AnimatedContainer(
+              ],
+            ),
+            Center(
+              child: AnimatedOpacity(
                 duration: Duration(milliseconds: 2000),
                 curve: Curves.fastLinearToSlowEaseIn,
-                height: _width / _containerSize,
-                width: _width / _containerSize,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
+                opacity: _containerOpacity,
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: 2000),
+                  curve: Curves.fastLinearToSlowEaseIn,
+                  height: _width / _containerSize,
+                  width: _width / _containerSize,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Image(image: AssetImage('assets/images/AppIcon2.png'),fit: BoxFit.cover,),
                 ),
-                child: Image(image: AssetImage('assets/images/puzzle.png'),fit: BoxFit.cover,),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
